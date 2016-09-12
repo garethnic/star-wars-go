@@ -1,20 +1,20 @@
 package film
 
 import (
-	"net/url"
-	"log"
-	"path"
-	"strconv"
-	"net/http"
-	"io/ioutil"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"net/url"
+	"path"
+	"strconv"
 )
 
 //Our Film object
 type Film struct {
-	Title string `json:"title"`
-	Episode int `json:"episode_id"`
+	Title        string `json:"title"`
+	Episode      int    `json:"episode_id"`
 	OpeningCrawl string `json:"opening_crawl"`
 }
 

@@ -1,19 +1,19 @@
 package person
 
 import (
-	"log"
-	"path"
-	"strconv"
-	"net/http"
-	"io/ioutil"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
 	"net/url"
+	"path"
+	"strconv"
 )
 
 //Our Person object
 type Person struct {
-	Name string `json:"name"`
+	Name   string `json:"name"`
 	Gender string `json:"gender"`
 }
 

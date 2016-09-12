@@ -2,9 +2,9 @@ package menu
 
 import (
 	"fmt"
-	"star-wars-go/person"
 	"os"
 	"star-wars-go/film"
+	"star-wars-go/person"
 )
 
 func Menu() {
