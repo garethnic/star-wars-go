@@ -2,7 +2,6 @@ package person
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -18,9 +17,7 @@ type Person struct {
 }
 
 //Get a person based on id
-func GetPerson(id int) {
-	var person Person
-
+func (p *Person) GetPerson(id int) Person {
 	//Base uri
 	call, err := url.Parse("http://swapi.co/api/people/")
 	if err != nil {
@@ -42,8 +39,17 @@ func GetPerson(id int) {
 	}
 
 	//Save query into object
-	json.Unmarshal(content, &person)
+	json.Unmarshal(content, &p)
 
-	fmt.Println("Found: ")
-	fmt.Println(person.Name, person.Gender)
+	return *p
+}
+
+//Get Person name
+func (p Person) GetName() string {
+	return p.Name
+}
+
+//Get Person gender
+func (p Person) GetGender() string {
+	return p.Gender
 }

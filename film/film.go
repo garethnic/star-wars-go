@@ -2,7 +2,6 @@ package film
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -19,9 +18,7 @@ type Film struct {
 }
 
 //Get a film based on ID
-func GetFilm(id int) {
-	var film Film
-
+func (f *Film) GetFilm(id int) Film {
 	//Base uri
 	call, err := url.Parse("http://swapi.co/api/films")
 	if err != nil {
@@ -42,10 +39,23 @@ func GetFilm(id int) {
 		log.Fatal(err)
 	}
 
-	//Save query into object
-	json.Unmarshal(content, &film)
+	//Save query into object1
+	json.Unmarshal(content, &f)
 
-	fmt.Println("Found: ")
-	fmt.Println(film.Title, film.Episode)
-	fmt.Println(film.OpeningCrawl)
+	return *f
+}
+
+//Get Film title
+func (f Film) GetTitle() string {
+	return f.Title
+}
+
+//Get Film episode
+func (f Film) GetEpisode() int {
+	return f.Episode
+}
+
+//Get Film opening crawl
+func (f Film) GetOpeningCrawl() string {
+	return f.OpeningCrawl
 }
